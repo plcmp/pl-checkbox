@@ -43,8 +43,8 @@ class PlCheckbox extends PlElement {
                 width: 8px;
                 height: 2px;
                 position: absolute;
-                top: 7px;
-                left: 4px;
+                top: 6px;
+                left: 3px;
             }
 
             :host([disabled]) .checkbox.checked{
@@ -58,21 +58,21 @@ class PlCheckbox extends PlElement {
             .checkbox-container {
                 display: flex;
                 flex-direction: row;
-                gap: 8px;
+                gap: var(--space-sm);
                 cursor: pointer;
                 align-items: center;
             }
 
             .caption {
-                color: var(--black-base);
-                font-size: var(--font-md);
+                color: var(--text-color);
+                font-size: var(--text-font);
             }
 
             .checkbox {
-                width: 16px;
-                height: 16px;
+                width: var(--base-size-xxs);
+                height: var(--base-size-xxs);
                 border: 1px solid var(--grey-light);
-                border-radius: 4px;
+                border-radius: var(--border-radius);
                 box-sizing: border-box;
                 position: relative;
                 align-self: center;
@@ -110,8 +110,8 @@ class PlCheckbox extends PlElement {
                 width: 8px;
                 height: 2px;
                 position: absolute;
-                top: 7px;
-                left: 4px;
+                top: 6px;
+                left: 3px;
             }
 
             .checkbox.indeterminate:hover {
