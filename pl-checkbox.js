@@ -76,6 +76,7 @@ class PlCheckbox extends PlElement {
                 box-sizing: border-box;
                 position: relative;
                 align-self: center;
+                background: var(--background-color);
             }
 
             .checkbox-container:hover .checkbox{
