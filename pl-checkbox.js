@@ -7,6 +7,8 @@ class PlCheckbox extends PlElement {
         return {
             label: { type: String },
             variant: { type: String },
+            orientation: { type: String },
+
             caption: { type: String },
             disabled: { type: Boolean, reflectToAttribute: true },
             hidden: { type: Boolean, reflectToAttribute: true },
@@ -16,6 +18,12 @@ class PlCheckbox extends PlElement {
 
     static get css() {
         return css`
+            :host {
+                display: inline-block;
+                outline: none;
+                --content-width: auto;
+            }
+
             :host([hidden]) {
                 display: none;
             }
@@ -33,7 +41,7 @@ class PlCheckbox extends PlElement {
 
             :host([disabled]) .checkbox{
                 background: var(--grey-light);
-                border: none;
+                border: 1px solid transparent;
             }
 
             :host([disabled]) .checkbox.indeterminate:after {
@@ -61,6 +69,7 @@ class PlCheckbox extends PlElement {
                 gap: var(--space-sm);
                 cursor: pointer;
                 align-items: center;
+                min-height: var(--base-size-md);
             }
 
             .caption {
@@ -71,7 +80,7 @@ class PlCheckbox extends PlElement {
             .checkbox {
                 width: var(--base-size-xxs);
                 height: var(--base-size-xxs);
-                border: 1px solid var(--grey-light);
+                border: 1px solid var(--grey-base);
                 border-radius: var(--border-radius);
                 box-sizing: border-box;
                 position: relative;
@@ -101,7 +110,7 @@ class PlCheckbox extends PlElement {
 
             .checkbox.indeterminate {
                 background: var(--white);
-                border: 1px solid var(--grey-light);
+                border: 1px solid var(--grey-base);
             }
 
             .checkbox.indeterminate:after {
@@ -126,11 +135,16 @@ class PlCheckbox extends PlElement {
         super.connectedCallback();
         this._checkboxContainer = this.root.querySelector('.checkbox');
         this._checkedObserver();
+
+        if (this.variant) {
+            console.log('Variant is deprecated, use orientation instead');
+            this.orientation = this.variant;
+        }
     }
 
     static get template() {
         return html`
-            <pl-labeled-container label="[[label]]" variant$="[[variant]]">
+            <pl-labeled-container label="[[label]]" orientation="[[orientation]]">
                 <slot name="label-prefix" slot="label-prefix"></slot>
                 <div class="checkbox-container" on-click="[[_onClick]]">
                     <div class="checkbox"></div>
