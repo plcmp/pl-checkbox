@@ -69,7 +69,7 @@ class PlCheckbox extends PlElement {
                 gap: var(--space-sm);
                 cursor: pointer;
                 align-items: center;
-                min-height: var(--base-size-md);
+                height: var(--base-size-md);
             }
 
             .caption {
