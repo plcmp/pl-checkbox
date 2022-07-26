@@ -4,14 +4,16 @@ import "@plcmp/pl-labeled-container";
 
 class PlCheckbox extends PlElement {
     static properties = {
-            label: { type: String },
-            variant: { type: String },
-            orientation: { type: String },
+        label: { type: String },
+        variant: { type: String },
+        orientation: { type: String },
 
-            caption: { type: String },
-            disabled: { type: Boolean, reflectToAttribute: true },
-            hidden: { type: Boolean, reflectToAttribute: true },
-            checked: { type: Boolean, observer: '_checkedObserver' }
+        caption: { type: String },
+        disabled: { type: Boolean, reflectToAttribute: true },
+        hidden: { type: Boolean, reflectToAttribute: true },
+        readonly: { type: Boolean, reflectToAttribute: true },
+
+        checked: { type: Boolean, observer: '_checkedObserver' }
     };
 
 
@@ -59,6 +61,10 @@ class PlCheckbox extends PlElement {
                 background-position: center;
                 border: none;
                 background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+            }
+
+            :host([readonly]) {
+                pointer-events: none;
             }
 
             .checkbox-container {
@@ -159,6 +165,7 @@ class PlCheckbox extends PlElement {
     }
 
     _onClick() {
+        if (this.readonly) return;
         this.checked = !this.checked;
     }
 }
