@@ -1,6 +1,6 @@
 {
     "name": "@plcmp/pl-checkbox",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "Simple checkbox component.",
     "main": "pl-checkbox.js",
     "repository": {
@@ -23,7 +23,7 @@
         }
     ],
     "dependencies": {
-        "polylib": "^1.0.0",
+        "polylib": "^1.1.4",
         "@plcmp/pl-labeled-container": "^0.1.1"
     }
 }
