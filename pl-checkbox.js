@@ -5,7 +5,6 @@ import "@plcmp/pl-labeled-container";
 class PlCheckbox extends PlElement {
     static properties = {
         label: { type: String },
-        variant: { type: String },
         orientation: { type: String },
 
         caption: { type: String },
@@ -133,16 +132,6 @@ class PlCheckbox extends PlElement {
                 border: 1px solid var(--grey-dark);
             }
     `;
-
-
-    connectedCallback() {
-        super.connectedCallback();
-
-        if (this.variant) {
-            console.log('Variant is deprecated, use orientation instead');
-            this.orientation = this.variant;
-        }
-    }
 
     static template = html`
             <pl-labeled-container label="[[label]]" orientation="[[orientation]]">
