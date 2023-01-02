@@ -1,11 +1,10 @@
 import { PlElement, html, css } from "polylib";
-
 import "@plcmp/pl-labeled-container";
 
 class PlCheckbox extends PlElement {
     static properties = {
         label: { type: String },
-        orientation: { type: String },
+        orientation: { type: String, reflectToAttribute: true },
 
         caption: { type: String },
         disabled: { type: Boolean, reflectToAttribute: true },
@@ -30,40 +29,23 @@ class PlCheckbox extends PlElement {
             :host([disabled]) {
                 color: var(--grey-base);
                 cursor: not-allowed;
-                pointer-events: none;
 				user-select: none;
+            }
+
+            :host([disabled]) .checkbox-container {
+                pointer-events: none;
             }
 
             :host([disabled]) .caption{
                 color: var(--grey-dark);
             }
 
-            :host([disabled]) .checkbox{
-                background: var(--grey-light);
-                border: 1px solid transparent;
-            }
-
-            :host([disabled]) .checkbox.indeterminate:after {
-                display: block;
-                content: '';
-                background: var(--grey-dark);
-                width: 8px;
-                height: 2px;
-                position: absolute;
-                top: 6px;
-                left: 3px;
-            }
-
-            :host([disabled]) .checkbox.checked{
-                background: var(--grey-light);
-                background-repeat: no-repeat;
-                background-position: center;
-                border: none;
-                background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
-            }
-
             :host([readonly]) {
                 pointer-events: none;
+            }
+
+            :host([orientation="vertical"]) .checkbox-container {
+                height: auto;
             }
 
             .checkbox-container {
@@ -88,7 +70,8 @@ class PlCheckbox extends PlElement {
                 box-sizing: border-box;
                 position: relative;
                 align-self: center;
-                background: var(--background-color);
+                background-color: var(--background-color);
+                transition: background .3s ease-in-out;
                 flex-shrink: 0;
             }
 
@@ -98,16 +81,24 @@ class PlCheckbox extends PlElement {
 
             .checkbox[state=checked] {
                 background: var(--primary-base);
-                border: none;
+                border: 1px solid var(--primary-base);
                 background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            :host([disabled]) .checkbox[state=checked] {
+                background: var(--grey-light);
+                border: 1px solid var(--grey-light);
+                background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="%23AFB3C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
                 background-repeat: no-repeat;
                 background-position: center;
             }
 
             .checkbox[state=checked]:hover {
                 background: var(--primary-dark);
-                border: none;
-                background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="9" height="8" viewBox="0 0 9 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+                border: 1px solid var(--primary-dark);
+                background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
                 background-repeat: no-repeat;
                 background-position: center;
             }
