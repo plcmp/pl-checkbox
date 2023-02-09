@@ -40,10 +40,6 @@ class PlCheckbox extends PlElement {
                 color: var(--grey-dark);
             }
 
-            :host([readonly]) {
-                pointer-events: none;
-            }
-
             :host([orientation="vertical"]) .checkbox-container {
                 height: auto;
             }
