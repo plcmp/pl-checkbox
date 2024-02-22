@@ -19,7 +19,7 @@ class PlCheckbox extends PlElement {
             :host {
                 display: inline-block;
                 outline: none;
-                --content-width: auto;
+                --pl-content-width: auto;
             }
 
             :host([hidden]) {
@@ -27,7 +27,7 @@ class PlCheckbox extends PlElement {
             }
 
             :host([disabled]) {
-                color: var(--grey-base);
+                color: var(--pl-grey-base);
                 cursor: not-allowed;
 				user-select: none;
             }
@@ -37,7 +37,7 @@ class PlCheckbox extends PlElement {
             }
 
             :host([disabled]) .caption{
-                color: var(--grey-dark);
+                color: var(--pl-grey-dark);
             }
 
             :host([orientation="vertical"]) .checkbox-container {
@@ -47,67 +47,67 @@ class PlCheckbox extends PlElement {
             .checkbox-container {
                 display: flex;
                 flex-direction: row;
-                gap: var(--space-sm);
+                gap: var(--pl-space-sm);
                 cursor: pointer;
                 align-items: center;
-                height: var(--base-size-md);
+                height: var(--pl-base-size);
             }
 
             .caption {
-                color: var(--text-color);
-                font-size: var(--text-font);
+                color: var(--pl-text-color);
+                font-size: var(--pl-text-font);
             }
 
             .checkbox {
-                width: var(--base-size-xxs);
-                height: var(--base-size-xxs);
-                border: 1px solid var(--grey-base);
-                border-radius: var(--border-radius);
+                width: calc(var(--pl-base-size) / 2 + 2px);
+                height: calc(var(--pl-base-size) / 2 + 2px);
+                border: 1px solid var(--pl-grey-base);
+                border-radius: var(--pl-border-radius);
                 box-sizing: border-box;
                 position: relative;
                 align-self: center;
-                background-color: var(--background-color);
+                background-color: var(--pl-background-color);
                 transition: background .3s ease-in-out;
                 flex-shrink: 0;
             }
 
             .checkbox-container:hover .checkbox{
-                border: 1px solid var(--primary-base);
+                border: 1px solid var(--pl-primary-base);
             }
 
             .checkbox[state=checked] {
-                background: var(--primary-base);
-                border: 1px solid var(--primary-base);
+                background: var(--pl-primary-base);
+                border: 1px solid var(--pl-primary-base);
                 background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
                 background-repeat: no-repeat;
                 background-position: center;
             }
 
             :host([disabled]) .checkbox[state=checked] {
-                background: var(--grey-light);
-                border: 1px solid var(--grey-light);
+                background: var(--pl-grey-light);
+                border: 1px solid var(--pl-grey-light);
                 background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="%23AFB3C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
                 background-repeat: no-repeat;
                 background-position: center;
             }
 
             .checkbox[state=checked]:hover {
-                background: var(--primary-dark);
-                border: 1px solid var(--primary-dark);
+                background: var(--pl-primary-dark);
+                border: 1px solid var(--pl-primary-dark);
                 background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Cpath d="M1 4.5L3 7L7.5 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
                 background-repeat: no-repeat;
                 background-position: center;
             }
 
             .checkbox[state=indeterminate] {
-                background: var(--white);
-                border: 1px solid var(--grey-base);
+                background: var(--pl-background-color);
+                border: 1px solid var(--pl-grey-base);
             }
 
             .checkbox[state=indeterminate]:after {
                 display: block;
                 content: '';
-                background: var(--primary-base);
+                background: var(--pl-primary-base);
                 width: 8px;
                 height: 2px;
                 position: absolute;
@@ -116,7 +116,7 @@ class PlCheckbox extends PlElement {
             }
 
             .checkbox[state=indeterminate]:hover {
-                border: 1px solid var(--grey-dark);
+                border: 1px solid var(--pl-grey-dark);
             }
     `;
 
