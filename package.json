@@ -1,6 +1,6 @@
 {
     "name": "@plcmp/pl-checkbox",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "description": "Simple checkbox component.",
     "main": "pl-checkbox.js",
     "repository": {
